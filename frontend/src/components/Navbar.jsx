@@ -1,16 +1,31 @@
+import { FaUser } from "react-icons/fa";
+
 const Navbar = () => {
+  const today = new Date().toLocaleDateString("id-ID", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return (
-    <div className="bg-white shadow-sm p-4 flex justify-between items-center">
-
-      <h2 className="text-xl font-semibold">
-        Library Management System
-      </h2>
-
+    <header className="h-20 px-8 flex items-center justify-between bg-[#070b14]">
       <div>
-        Admin
+        <p className="text-sm text-gray-500">
+          Library Management System
+        </p>
       </div>
 
-    </div>
+      <div className="flex items-center gap-5">
+        <p className="text-sm text-gray-400">
+          {today}
+        </p>
+
+        <div className="w-11 h-11 rounded-full bg-cyan-500/15 text-cyan-400 flex items-center justify-center">
+          <FaUser />
+        </div>
+      </div>
+    </header>
   );
 };
 

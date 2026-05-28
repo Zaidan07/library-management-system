@@ -1,16 +1,10 @@
-import { useState } from "react";
-import Sidebar from "../components/Sidebar";
-import Navbar from "../components/Navbar";
+import Sidebar from "../src/components/Sidebar";
+import Navbar from "../src/components/Navbar";
 
 const DashboardLayout = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
   return (
     <div className="flex min-h-screen bg-[#070b14] text-gray-100">
-      <Sidebar
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
+      <Sidebar />
 
       <div className="flex-1 min-h-screen">
         <Navbar />

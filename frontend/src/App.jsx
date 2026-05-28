@@ -6,15 +6,13 @@ import Dashboard from "./pages/Dashboard";
 import Categories from "./pages/Categories";
 import Members from "./pages/Members";
 import Books from "./pages/Books";
+import Borrowings from "./pages/Borrowings";
 
 function App() {
   return (
     <BrowserRouter>
-
       <DashboardLayout>
-
         <Routes>
-
           <Route path="/" element={<Dashboard />} />
 
           <Route path="/categories" element={<Categories />} />
@@ -23,10 +21,9 @@ function App() {
 
           <Route path="/books" element={<Books />} />
 
+          <Route path="/borrowings" element={<Borrowings />} />
         </Routes>
-
       </DashboardLayout>
-
     </BrowserRouter>
   );
 }

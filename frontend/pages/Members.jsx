@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import api from "../src/services/api";
 import Swal from "sweetalert2";
-import { dummyMembers } from "../data/dummyData";
 
 const Members = () => {
   const [members, setMembers] = useState([]);
@@ -13,15 +12,14 @@ const Members = () => {
 
   const [editId, setEditId] = useState(null);
 
+  // FETCH MEMBERS
   const fetchMembers = async () => {
     try {
       const response = await api.get("/members");
 
       setMembers(response.data);
-    } catch {
-      console.warn("Backend not running. Using dummy members data.");
-
-      setMembers(dummyMembers);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -229,13 +227,6 @@ const Members = () => {
                 </td>
               </tr>
             ))}
-            {members.length === 0 && (
-              <tr>
-                <td colSpan="8" className="text-center text-gray-500 p-6">
-                  No member data available.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>

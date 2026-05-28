@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import api from "../services/api";
+import api from "../src/services/api";
 import Swal from "sweetalert2";
 import { FaChevronDown } from "react-icons/fa";
-import { dummyBooks, dummyCategories } from "../data/dummyData";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -17,27 +16,25 @@ const Books = () => {
 
   const [editId, setEditId] = useState(null);
 
+  // FETCH BOOKS
   const fetchBooks = async () => {
     try {
       const response = await api.get("/books");
 
       setBooks(response.data);
-    } catch {
-      console.warn("Backend not running. Using dummy books data.");
-
-      setBooks(dummyBooks);
+    } catch (error) {
+      console.error(error);
     }
   };
 
+  // FETCH CATEGORIES
   const fetchCategories = async () => {
     try {
       const response = await api.get("/categories");
 
       setCategories(response.data);
-    } catch {
-      console.warn("Backend not running. Using dummy categories data.");
-
-      setCategories(dummyCategories);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -298,13 +295,6 @@ const Books = () => {
                 </td>
               </tr>
             ))}
-            {books.length === 0 && (
-              <tr>
-                <td colSpan="8" className="text-center text-gray-500 p-6">
-                  No book data available.
-                </td>
-              </tr>
-            )}
           </tbody>
         </table>
       </div>
